@@ -4,8 +4,10 @@ import { TodoPage } from '../pages/TodoPage';
 test('ajouter une tâche TODO', async ({ page }) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
+    
     await todoPage.addTask('Acheter du pain');
     await todoPage.addTask('Aller courir');
+
     await todoPage.isTaskVisible('Acheter du pain');
     await todoPage.isTaskVisible('Aller courir');
 

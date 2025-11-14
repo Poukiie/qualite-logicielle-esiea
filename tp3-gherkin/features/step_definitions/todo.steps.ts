@@ -30,7 +30,6 @@ When('j’ajoute la tâche {string}', async (task: string) => {
 
 Then('la tâche {string} est visible dans la liste', async (task: string) => {
     await expect(page.getByText(task)).toBeVisible();
-    await page.pause();
 });
 
 When('je supprime la tâche {string}', async (task: string) => {
@@ -41,7 +40,6 @@ When('je supprime la tâche {string}', async (task: string) => {
 
 Then('la tâche {string} n’est plus visible dans la liste', async (task: string) => {
     await expect(page.getByText(task)).toHaveCount(0);
-    await page.pause();
 });
 
 // Exercice : ajout step pour cocher case
@@ -54,5 +52,4 @@ When('je coche la tâche {string}', async (task: string) => {
 Then('la tâche {string} apparaît comme terminée', async (task: string) => {
     const todoItem = page.locator('.todo-list li').filter({ hasText: task });
     await expect(todoItem).toHaveClass(/completed/);
-    await page.pause();
 });
