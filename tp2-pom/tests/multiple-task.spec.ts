@@ -14,5 +14,4 @@ test('ajouter une tâche TODO', async ({ page }) => {
     // Vérifier que la tâche "Acheter du pain" a été supprimée
     await todoPage.isTaskNotVisible('Acheter du pain');
     await todoPage.isTaskVisible('Aller courir');
-    await page.pause();
 });

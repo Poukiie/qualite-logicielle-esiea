@@ -36,11 +36,12 @@ export class TodoPage {
     }
 
     async isTaskNotVisible(task: string) {
-        await expect(this.page.getByText(task)).not.toBeVisible();
+        await expect(this.page.getByText(task)).toHaveCount(0);
     }
 
     async isTaskCompleted(task: string) {
-        const todoItem = this.page.locator(`xpath=//label[text()="${task}"]/../..`);
+        // const todoItem = this.page.locator(`xpath=//label[text()="${task}"]/../..`);
+        const todoItem = this.page.locator(this.todoList).filter({ hasText: task });
         await expect(todoItem).toHaveClass(/completed/);
     }
 }
