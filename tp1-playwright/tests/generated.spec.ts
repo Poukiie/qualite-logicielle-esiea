@@ -12,6 +12,7 @@ test('test', async ({ page }) => {
     await page.getByRole('textbox', { name: 'What needs to be done?' }).press('Enter');
     await page.getByRole('textbox', { name: 'What needs to be done?' }).fill('faire un truc spécifique');
     await page.getByRole('textbox', { name: 'What needs to be done?' }).press('Enter');
+    await expect(page.getByText('envoyer doc')).toBeVisible();
     await expect(page.getByText('télécharger fiche de salaire')).toBeVisible();
     await expect(page.getByText('faire un truc spécifique')).toBeVisible();
 });
