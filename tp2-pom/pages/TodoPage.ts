@@ -18,18 +18,25 @@ export class TodoPage {
     }
 
     async deleteTask(task: string) {
-        const todoItem = this.page.locator(`xpath=//label[text()="${task}"]/..`);
+        // const todoItem = this.page.locator(`xpath=//label[text()="${task}"]/..`);
+        const todoItem = this.page.locator(this.todoList).filter({ hasText: task });
         await todoItem.hover();
         await todoItem.locator('.destroy').click();
     }
 
     async completeTask(task: string) {
-        const todoItem = this.page.locator(`xpath=//label[text()="${task}"]/..//input[@class='toggle']`);
+        // const todoItem = this.page.locator(`xpath=//label[text()="${task}"]/..//input[@class='toggle']`);
+        // alternative sans xpath
+        const todoItem = this.page.locator(this.todoList).filter({ hasText: task }).locator('.toggle');
         await todoItem.check();
     }
 
     async isTaskVisible(task: string) {
         await expect(this.page.getByText(task)).toBeVisible();
+    }
+
+    async isTaskNotVisible(task: string) {
+        await expect(this.page.getByText(task)).not.toBeVisible();
     }
 
     async isTaskCompleted(task: string) {
