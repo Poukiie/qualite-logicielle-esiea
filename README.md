@@ -20,3 +20,13 @@ Nous allons nous concentrer nos tests sur :
 1. L'utilisateur se connecte avec son email et son mot de passe
 2. Il crée une playlist, qui se nomme par défaut "Ma Playlist N°1"
 3. Il recherche un titre dans la barre de recherche et clique sur "Ajouter" pour l'ajouter à la playlist
+
+
+Initier le projet :
+npm init playwright@latest
+
+Installer les dépendances nécessaires :
+npm install --save-dev @cucumber/cucumber ts-node typescript
+
+Pour lancer les tests :
+npx cucumber-js --require-module ts-node/register --require features/steps/**/*.ts
