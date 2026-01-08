@@ -9,12 +9,13 @@
 - Concevoir une suite de tests complète et maintenable sur un site web réel
 
 ## Site choisi
-Nous avons choisi le site Spotify, un plateforme de streaming de musique permettant à l'utilisateur de rechercher des titres, artistes, albums, de créer des playlists et ajouter ou supprimer des titres à ces playlists.
+Nous avons choisi le site Zooplus, une boutique en ligne spécialisée dans la vente de produits pour animaux (chiens, chats, rongeurs, etc.). Ce site propose un large catalogue allant de la nourriture aux accessoires et aux jouets. C'est un support intéressant pour nos tests car il permet de simuler un parcours complet : de la recherche d'un article spécifique jusqu'à la validation du panier.
 
-Nous allons nous concentrer nos tests sur :
-- La connexion
-- La création d'une playlist
-- L'ajout d'un titre à une playlist
+Nous allons concentrer nos tests sur :
+- Authentification
+- Gestion du panier
+- Recherche de produit
+- Navigation des différentes catégories
 
 ## Scénario
 1. L'utilisateur se connecte avec son email et son mot de passe
@@ -30,3 +31,5 @@ npm install --save-dev @cucumber/cucumber ts-node typescript
 
 Pour lancer les tests :
 npx cucumber-js --require-module ts-node/register --require features/steps/**/*.ts
+
+npx cucumber-js
