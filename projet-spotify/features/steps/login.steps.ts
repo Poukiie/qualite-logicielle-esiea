@@ -37,7 +37,7 @@ When("je me connecte avec des identifiants valides : {string}, {string}", async 
 
 Then("je suis redirigé vers la page de mon profil", async () => {
   const welcomeTitle = page.locator('[data-zta="welcome-section-title"]');
-  
+
   await expect(welcomeTitle).toBeVisible();
   await expect(welcomeTitle).toContainText(/Bonjour/);
 });
