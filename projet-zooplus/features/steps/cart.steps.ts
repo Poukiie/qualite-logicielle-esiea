@@ -1,83 +1,71 @@
 import { Given, When, Then, Before, After } from "@cucumber/cucumber";
 import { chromium, Browser, Page, expect } from "@playwright/test";
+import { CartPage } from "../../pages/CartPage";
 
 let browser: Browser;
 let page: Page;
+let cartPage: CartPage;
+let initialPrice: string;
 
-// Hook exécuté avant chaque scénario
 Before(async () => {
     browser = await chromium.launch({
-        headless: false, // ← Mode headed
-        slowMo: 200, // Optionnel : ralentit les actions pour mieux voir
+        headless: false,
+        slowMo: 200,
     });
+
     const context = await browser.newContext();
     page = await context.newPage();
+    cartPage = new CartPage(page);
 });
 
-// Hook exécuté après chaque scénario
 After(async () => {
     await browser.close();
 });
 
 Given("je suis sur la page d'accueil", async () => {
-    await page.goto("https://www.zooplus.fr/");
-    await page.getByRole('button', { name: 'Utiliser uniquement les cookies nécessaires' }).click();
+    await cartPage.gotoHome();
+    await cartPage.acceptCookies();
 });
 
-
 When("j'ajoute un produit dans le panier", async () => {
-    const section = page.locator('[data-name="container_3"]');
-    const firstProduct = section.locator('a[class*="RecommendationProductCard_slideCard"]').first();
-    await firstProduct.click();
-
-    await page.waitForLoadState('networkidle'); // attendre que la page soit chargé
-
-    const cartBtn = page.locator('[data-zta="SelectedArticleBox__AddToCartButton"]');
-    await cartBtn.click();
+    await cartPage.addFirstProductFromSection("container_3");
 });
 
 Then("le produit est ajouté au panier", async () => {
-    const title = page.locator('#cartDrawer-heading');
-
+    const title = await cartPage.getCartTitle();
     await expect(title).toBeVisible();
     await expect(title).toContainText("Ajouté au panier");
 });
 
 When("je vais sur la page panier", async () => {
-    await page.getByRole('link', { name: 'Vers le panier' }).click();
+    await cartPage.goToCart();
 });
 
 When("je clique sur le bouton de suppression du produit", async () => {
-    await page.locator('[data-zta="quantityStepperDecrementButton"]').first().click();
-    await page.waitForLoadState('networkidle');
+    await cartPage.removeFirstProduct();
 });
 
 Then("le produit devrait disparaître", async () => {
-    const product = page.locator('article[data-testid="standard-article"]');
+    const product = await cartPage.getProduct();
     await expect(product).toBeHidden();
 });
 
 Then("je devrais voir le message {string}", async (message: string) => {
-    const notification = page.getByText(message);
+    const notification = await cartPage.getNotification(message);
     await expect(notification).toBeVisible();
 });
 
-let initialPrice: string;
-
 When("je clique sur le bouton +", async () => {
-    initialPrice = await page.locator('[data-testid="total-price-value"] [data-zta="reducedPriceAmount"]').innerText();
-
-    await page.locator('[data-zta="quantityStepperIncrementButton"]').first().click();
-    await page.waitForLoadState('networkidle');
+    initialPrice = await cartPage.getTotalPrice();
+    await cartPage.incrementQuantity();
 });
 
 Then("la quantité affichée devrait être {string}", async (value: string) => {
-    const quantityInput = page.locator('[data-zta="quantityStepperInput"]').first();
-    await expect(quantityInput).toHaveValue(value);
+    const quantity = await cartPage.getQuantity();
+    expect(quantity).toBe(value);
 });
 
 Then("le montant total du panier devrait être mis à jour", async () => {
-    const newPrice = await page.locator('[data-testid="total-price-value"] [data-zta="reducedPriceAmount"]').innerText();
-
+    const newPrice = await cartPage.getTotalPrice();
     expect(newPrice).not.toBe(initialPrice);
 });
