@@ -8,7 +8,7 @@ export class LoginPage {
   }
 
   async gotoLoginPage() {
-    await this.page.goto("https://www.zooplus.fr/account/overview");
+    await this.page.goto("https://www.zooplus.fr/account/login");
   }
 
   async acceptCookies() {
