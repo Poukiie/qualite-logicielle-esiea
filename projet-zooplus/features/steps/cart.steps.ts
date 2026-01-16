@@ -22,6 +22,10 @@ After(async () => {
     await browser.close();
 });
 
+// ---------------------------------------------------------- //
+//                Ajouter un produit au panier                //
+// ---------------------------------------------------------- //
+
 Given("je suis sur la page d'accueil", async () => {
     await cartPage.gotoHome();
     await cartPage.acceptCookies();
@@ -41,6 +45,10 @@ When("je vais sur la page panier", async () => {
     await cartPage.goToCart();
 });
 
+// ----------------------------------------------------------- //
+//         Supprimer un produit présent dans le panier         //
+// ----------------------------------------------------------- //
+
 When("je clique sur le bouton de suppression du produit", async () => {
     await cartPage.removeFirstProduct();
 });
@@ -54,6 +62,10 @@ Then("je devrais voir le message {string}", async (message: string) => {
     const notification = await cartPage.getNotification(message);
     await expect(notification).toBeVisible();
 });
+
+// ------------------------------------------------------------------ //
+//      Modifier la quantité d'un produit présent dans le panier      //
+// ------------------------------------------------------------------ //
 
 When("je clique sur le bouton +", async () => {
     initialPrice = await cartPage.getTotalPrice();

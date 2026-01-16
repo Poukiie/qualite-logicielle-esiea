@@ -29,12 +29,27 @@ Given("j'ai accepté les cookies", async () => {
   await loginPage.acceptCookies();
 });
 
-When("je me connecte avec des identifiants valides : {string}, {string}", async (username: string, password: string) => {
+When("je me connecte avec des identifiants : {string}, {string}", async (username: string, password: string) => {
   await loginPage.login(username, password);
 });
+
+// ------------------------------------------------------------ //
+//       Connexion réussie avec des identifiants valides        //
+// ------------------------------------------------------------ //
 
 Then("je suis redirigé vers la page de mon profil", async () => {
   const welcomeTitle = await loginPage.getWelcomeTitle();
   await expect(welcomeTitle).toBeVisible();
   await expect(welcomeTitle).toContainText(/Bonjour/);
+});
+
+// ------------------------------------------------------------ //
+//        Echec de connexion des identifiants invalides         //
+// ------------------------------------------------------------ //
+
+Then("un message d'erreur {string} devrait s'afficher", async (message: string) => {
+  const alertText = await loginPage.getAlertText();
+  
+  await expect(alertText).toBeVisible();
+  await expect(alertText).toContainText(message);
 });

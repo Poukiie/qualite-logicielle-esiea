@@ -36,4 +36,8 @@ export class LoginPage {
   async getWelcomeTitle() {
     return this.page.locator('[data-zta="welcome-section-title"]');
   }
+
+  async getAlertText() {
+    return this.page.locator('[data-zta="data-zta"]');
+  }
 }
