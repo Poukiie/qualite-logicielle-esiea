@@ -9,7 +9,7 @@
 - Concevoir une suite de tests complète et maintenable sur un site web réel
 
 ## Site choisi
-Nous avons choisi le site Zooplus, une boutique en ligne spécialisée dans la vente de produits pour animaux (chiens, chats, rongeurs, etc.). Ce site propose un large catalogue allant de la nourriture aux accessoires et aux jouets. C'est un support intéressant pour nos tests car il permet de simuler un parcours complet : de la recherche d'un article spécifique jusqu'à la validation du panier.
+Nous avons choisi le site Zooplus (https://www.zooplus.fr/), une boutique en ligne spécialisée dans la vente de produits pour animaux (chiens, chats, rongeurs, etc.). Ce site propose un large catalogue allant de la nourriture aux accessoires et aux jouets. C'est un support intéressant pour nos tests car il permet de simuler un parcours complet : de la recherche d'un article spécifique jusqu'à la validation du panier.
 
 Nous allons concentrer nos tests sur :
 - Authentification
@@ -19,8 +19,8 @@ Nous allons concentrer nos tests sur :
 
 ## Scénario
 1. L'utilisateur se connecte avec son email et son mot de passe
-2. Il crée une playlist, qui se nomme par défaut "Ma Playlist N°1"
-3. Il recherche un titre dans la barre de recherche et clique sur "Ajouter" pour l'ajouter à la playlist
+2. Il recherche un produit via la barre de recherche ou les catégories
+3. Il l'ajoute à son panier, gère la quantité de chaque produit, et valide le panier
 
 
 Initier le projet :
