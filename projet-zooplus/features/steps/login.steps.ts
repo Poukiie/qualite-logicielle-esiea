@@ -1,44 +1,25 @@
-import { Given, When, Then, Before, After } from "@cucumber/cucumber";
-import { chromium, Browser, Page, expect } from "@playwright/test";
-import { LoginPage } from "../../pages/LoginPage";
+import { Given, When, Then } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
 
-let browser: Browser;
-let page: Page;
-let loginPage: LoginPage;
-
-Before(async () => {
-  browser = await chromium.launch({
-    headless: false,
-    slowMo: 200,
-  });
-
-  const context = await browser.newContext();
-  page = await context.newPage();
-  loginPage = new LoginPage(page);
+Given("je suis sur la page de connexion", async function() {
+  await this.loginPage.gotoLoginPage();
 });
 
-After(async () => {
-  await browser.close();
+Given("j'ai accepté les cookies", async function() {
+  await this.commonPage.acceptCookies();
 });
 
-Given("je suis sur la page de connexion", async () => {
-  await loginPage.gotoLoginPage();
-});
-
-Given("j'ai accepté les cookies", async () => {
-  await loginPage.acceptCookies();
-});
-
-When("je me connecte avec des identifiants : {string}, {string}", async (username: string, password: string) => {
-  await loginPage.login(username, password);
+When("je me connecte avec des identifiants : {string}, {string}",
+  async function(username: string, password: string) {
+  await this.loginPage.login(username, password);
 });
 
 // ------------------------------------------------------------ //
 //       Connexion réussie avec des identifiants valides        //
 // ------------------------------------------------------------ //
 
-Then("je suis redirigé vers la page de mon profil", async () => {
-  const welcomeTitle = await loginPage.getWelcomeTitle();
+Then("je suis redirigé vers la page de mon profil", async function() {
+  const welcomeTitle = await this.loginPage.getWelcomeTitle();
   await expect(welcomeTitle).toBeVisible();
   await expect(welcomeTitle).toContainText(/Bonjour/);
 });
@@ -47,8 +28,8 @@ Then("je suis redirigé vers la page de mon profil", async () => {
 //        Echec de connexion des identifiants invalides         //
 // ------------------------------------------------------------ //
 
-Then("un message d'erreur {string} devrait s'afficher", async (message: string) => {
-  const alertText = await loginPage.getAlertText();
+Then("un message d'erreur {string} devrait s'afficher", async function(message: string) {
+  const alertText = await this.loginPage.getAlertText();
   
   await expect(alertText).toBeVisible();
   await expect(alertText).toContainText(message);

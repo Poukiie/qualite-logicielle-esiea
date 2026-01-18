@@ -11,10 +11,6 @@ export class LoginPage {
     await this.page.goto("https://www.zooplus.fr/account/login");
   }
 
-  async acceptCookies() {
-    await this.page.getByRole('button', { name: 'Utiliser uniquement les cookies nécessaires' }).click();
-  }
-
   async fillEmail(email: string) {
     await this.page.getByLabel("Adresse e-mail").fill(email);
   }
