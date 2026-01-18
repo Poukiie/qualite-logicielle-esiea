@@ -4,7 +4,7 @@ import { Given, When, Then } from "@cucumber/cucumber";
 //           Accéder à la catégorie jouets pour chat           //
 // ----------------------------------------------------------- //
 
-Given("je suis sur la page d'accueil", async function () {
+Given("je suis sur la page d'accueil pour naviguer", async function () {
 });
 
 When(

@@ -28,6 +28,6 @@ export class SearchPage {
 	}
 
 	async getOtherResultsSuggestion() {
-		return this.page.locator('[data-zta="recoSlider"]').filter({ hasText: 'Autres articles intéssants' });
+		return this.page.locator('[data-zta="recoSlider"]').nth(0);
 	}
 }

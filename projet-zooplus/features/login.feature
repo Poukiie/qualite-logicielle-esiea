@@ -9,4 +9,4 @@ Feature: Authentification
         Given je suis sur la page de connexion
         And j'ai accepté les cookies
         When je me connecte avec des identifiants : "test@email.com", "Mdp-12345"
-        Then un message d'erreur "Identifiants invalides" devrait s'afficher
+        Then un message d'erreur "Adresse e-mail ou mot de passe incorrect" devrait s'afficher

@@ -38,6 +38,6 @@ export class LoginPage {
   }
 
   async getAlertText() {
-    return this.page.locator('[data-zta="data-zta"]');
+    return this.page.locator('[data-zta="alertText"]');
   }
 }
