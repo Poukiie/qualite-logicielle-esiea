@@ -12,7 +12,6 @@ export class NavigationPage {
     }
 
     async navigateToSubCategory(subCategory: string) {
-        // await this.page.locator('[data-zta="accordion-content"]').getByRole('link', { name: subCategory }).click();
         return this.page.locator('[data-zta="categories-list"]').getByRole('link', { name: subCategory }).click();
     }
 
