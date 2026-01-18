@@ -8,7 +8,7 @@ export class NavigationPage {
     }
 
     async navigateToCategory(category: string) {
-        await this.page.getByRole('navigation').getByRole('link', { name: category }).click();
+        await this.page.locator('[data-zta="lower-bar-category-slider"]').getByRole('link', { name: category, exact: true }).click();
     }
 
     async navigateToSubCategory(subCategory: string) {

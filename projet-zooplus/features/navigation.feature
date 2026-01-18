@@ -4,7 +4,7 @@ Feature: Navigation
         When je clique sur la catégorie "Chat"
         And je clique sur la sous-catégorie "Jouet et jeu pour chat"
         Then la page affiche une liste de jouets spécifique aux chats
-        And le fil d'Ariane doit afficher "Chat > Jouet et jeu pour chat"
+        And le fil d'Ariane doit afficher "Chat" et "Jouet et jeu pour chat"
 
     Scenario: Filtrer les produits par une marque spécifique
         Given je suis sur la page d'accueil pour naviguer
