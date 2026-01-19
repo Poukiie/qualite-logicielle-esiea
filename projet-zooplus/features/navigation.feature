@@ -12,4 +12,4 @@ Feature: Navigation
         And je clique sur la sous-catégorie "Jouet et jeu pour chat"
         And je filtre la recherche par marque : "beeztees"
         Then la page affichée ne doit contenir que des produits de la marque "beeztees"
-        And le nombre de résultats doit être égal à 11
+        And le nombre de produits affichés est égal à 11

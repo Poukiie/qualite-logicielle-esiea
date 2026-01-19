@@ -20,4 +20,12 @@ export class NavigationPage {
         await breadcrumb.getByRole('link', { name: category });
         await breadcrumb.getByRole('listitem', {name: subCategory});
     }
+
+    async filterByBrand(brand: string) {
+        return this.page.locator('[data-zta="accordion-content"]').getByRole('checkbox', { name: brand }).click();
+    }
+
+    async getProductTitles() {
+        return this.page.locator('[data-zta="product-grid-wrapper"] h2[data-zta="product-title"]');
+    }
 }
