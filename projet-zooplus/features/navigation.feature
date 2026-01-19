@@ -10,5 +10,6 @@ Feature: Navigation
         Given je suis sur la page d'accueil pour naviguer
         When je clique sur la catégorie "Chat"
         And je clique sur la sous-catégorie "Jouet et jeu pour chat"
-        And je filtre la recherche par "Marque" : "animallparadise"
-        Then la page affichée ne doit contenir que des produits de la marque "animallparadise"
+        And je filtre la recherche par marque : "beeztees"
+        Then la page affichée ne doit contenir que des produits de la marque "beeztees"
+        And le nombre de résultats doit être égal à 11
