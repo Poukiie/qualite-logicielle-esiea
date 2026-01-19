@@ -55,7 +55,7 @@ Then(
   }
 );
 
-Then("Le nombre de produits affichés est égal à {int}", async function (expectedCount: number) {
+Then("le nombre de produits affichés est égal à {int}", async function (expectedCount: number) {
   const allTitles = await this.navigationPage.getProductTitles();
   const count = await allTitles.count();
   expect(count).toBe(expectedCount);
