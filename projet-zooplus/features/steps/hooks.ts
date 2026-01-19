@@ -1,10 +1,12 @@
-import { Before, After } from "@cucumber/cucumber";
+import { Before, After, setDefaultTimeout } from "@cucumber/cucumber";
 import { chromium } from "@playwright/test";
 import { CommonPage } from "../../pages/CommonPage";
 import { LoginPage } from "../../pages/LoginPage";
 import { CartPage } from "../../pages/CartPage";
 import { SearchPage } from "../../pages/SearchPage";
 import { NavigationPage } from "../../pages/NavigationPage";
+
+setDefaultTimeout(30000);
 
 Before(async function () {
     this.browser = await chromium.launch({
