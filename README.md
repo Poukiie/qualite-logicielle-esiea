@@ -4,7 +4,6 @@
 - Mettre en pratique l’ensemble des notions vues en TP :
 - Automatisation E2E avec Playwright
 - Modèle Page Object Model (POM)
-- Rédaction de scénarios en BDD / Gherkin (avec @cucumber/cucumber ou playwright-bdd )
 - Rédaction de scénarios en BDD / Gherkin (avec @cucumber/cucumber ou playwright-bdd)
 - Utilisation de mocks
 - Concevoir une suite de tests complète et maintenable sur un site web réel
