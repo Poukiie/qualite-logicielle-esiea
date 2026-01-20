@@ -1,4 +1,4 @@
-import { Page, expect } from "@playwright/test";
+import { Page } from "@playwright/test";
 
 export class LoginPage {
   readonly page: Page;
@@ -8,7 +8,7 @@ export class LoginPage {
   }
 
   async gotoLoginPage() {
-    await this.page.goto("https://www.zooplus.fr/account/login");
+    await this.page.goto("https://www.zooplus.fr/account/overview");
   }
 
   async fillEmail(email: string) {
@@ -31,7 +31,6 @@ export class LoginPage {
 
   async getWelcomeTitle() {
     await this.page.waitForLoadState("networkidle");
-    await this.page.goto("https://www.zooplus.fr/account/overview");
     return this.page.locator('[data-zta="welcome-section-title"]');
   }
 
