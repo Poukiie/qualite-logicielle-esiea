@@ -10,3 +10,10 @@ Feature: Recherche de produit
         When j'effectue une recherche pour le terme "jytdytdyfg"
         Then je devrais voir ce message "Nous n'avons trouvé aucune correspondance pour \"jytdytdyfg\"."
         And le site devrait me proposer des produits alternatifs
+
+    @mock
+    Scenario: Mock de la recherche
+        Given je suis sur la page d'accueil pour la recherche de produits
+        When j'effectue une recherche mocké pour le terme "croquettes"
+        Then le titre des résultats devrait contenir "croquettes"
+        And la page des résultats mocké devrait afficher des articles en lien avec "croquettes"
