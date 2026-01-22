@@ -38,15 +38,16 @@ npx cucumber-js
 Nous avons choisi le site Zooplus (https://www.zooplus.fr/), une boutique en ligne spécialisée dans la vente de produits pour animaux (chiens, chats, rongeurs, etc.). Ce site propose un large catalogue allant de la nourriture aux accessoires et aux jouets. C'est un support intéressant pour nos tests car il permet de simuler un parcours complet : de la recherche d'un article spécifique jusqu'à la validation du panier.
 L'authentification est simple et ne nécessite pas de double vérification, ce qui est idéal pour nos tests.
 
+---
+
+## Scénarios
+
 Nous allons concentrer nos tests sur :
 - Authentification
 - Gestion du panier
 - Recherche de produits via la barre de recherche
 - Navigation dans les différentes catégories des menus
 
----
-
-## Scénarios
 
 ### 🔐 Authentification
 
