@@ -62,7 +62,7 @@ Nous allons concentrer nos tests sur :
 3. Un message d'erreur "Adresse e-mail ou mot de passe incorrect" devrait s'afficher
 
 > [!NOTE]  
-> L'authentification n'est pas nécessaire pour les tests suivants. Chaque test nécessitera au départ d'aller sur la page d'accueil et d'accepter les cookies.
+> La scénario 1 est fonctionnel mais a été commenté car nous n'avons pas d'identifiants de test valides à vous fournir. L'authentification n'est pas nécessaire pour les tests suivants. Chaque test nécessitera au départ d'aller sur la page d'accueil et d'accepter les cookies.
 
 ---
 
