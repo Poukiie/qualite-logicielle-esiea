@@ -9,7 +9,6 @@ let initialPrice: string;
 
 Given("je suis sur la page d'accueil", async function() {
     await this.commonPage.gotoHome();
-    await this.commonPage.acceptCookies();
 });
 
 When("j'ajoute un produit dans le panier", async function() {

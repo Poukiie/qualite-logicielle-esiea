@@ -5,7 +5,6 @@ import { mockSearch } from "../../mocks/search.mocks";
 
 Given("je suis sur la page d'accueil pour la recherche de produits", async function() {
     await this.commonPage.gotoHome();
-    await this.commonPage.acceptCookies();
 });
 
 When("j'effectue une recherche pour le terme {string}", async function(term: string) {

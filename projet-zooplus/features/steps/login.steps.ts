@@ -5,10 +5,6 @@ Given("je suis sur la page de connexion", async function() {
   await this.loginPage.gotoLoginPage();
 });
 
-Given("j'ai accepté les cookies", async function() {
-  await this.commonPage.acceptCookies();
-});
-
 When("je me connecte avec des identifiants : {string}, {string}",
   async function(username: string, password: string) {
   await this.loginPage.login(username, password);

@@ -7,7 +7,6 @@ import { expect } from "@playwright/test";
 
 Given("je suis sur la page d'accueil pour naviguer", async function() {
   await this.commonPage.gotoHome();
-  await this.commonPage.acceptCookies();
 });
 
 When("je clique sur la catégorie {string}", async function(category: string) {
