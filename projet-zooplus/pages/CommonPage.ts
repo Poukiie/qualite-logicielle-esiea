@@ -9,7 +9,7 @@ export class CommonPage {
 
     async gotoHome() {
         await this.page.goto("https://www.zooplus.fr/");
-        await this.page.waitForLoadState("networkidle"); // attendre que la page soit chargée
+        await this.page.getByRole('button', { name: 'Utiliser uniquement les cookies nécessaires' }).waitFor({ state: 'visible' });
         await this.page.getByRole('button', { name: 'Utiliser uniquement les cookies nécessaires' }).click();
     }
 
