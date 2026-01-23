@@ -32,7 +32,7 @@ jobs:
 
     - name: Run Playwright tests
       working-directory: ./projet-zooplus
-      run: npx cucumber-js
+      run: npm run test:e2e
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
