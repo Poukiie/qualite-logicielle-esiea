@@ -7,8 +7,10 @@ export class SearchPage {
 		this.page = page;
 	}
 
-	async getPlaceholderText() {
-		return this.page.locator('[data-zta="search_form_input_desktop"]');
+	async search(term: string) {
+		const searchInput = await this.page.locator('[data-zta="search_form_input_desktop"]');
+		await searchInput.fill(term);
+		await searchInput.press("Enter");
 	}
 
 	async getResultsTitle() {
@@ -17,5 +19,9 @@ export class SearchPage {
 
 	async getOtherResultsSuggestion() {
 		return this.page.locator('[data-zta="recoSlider"]').nth(0);
+	}
+
+	async getProductTitles() {
+		return this.page.locator('[data-testid="product-card"] h2').count();
 	}
 }

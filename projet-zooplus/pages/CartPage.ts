@@ -8,8 +8,8 @@ export class CartPage {
     }
 
     async addFirstProductFromSection(sectionDataName: string) {
-        const section = this.page.locator(`[data-name="${sectionDataName}"]`);
-        const firstProduct = section.locator('a[class*="RecommendationProductCard_slideCard"]').first();
+        const section = this.page.locator(`[data-z-carousel-id="${sectionDataName}"]`);
+        const firstProduct = section.locator('[data-zta="product-slide"]').first();
         await firstProduct.click();
 
         await this.page.waitForLoadState("networkidle"); // attendre que la page soit chargée
@@ -33,11 +33,11 @@ export class CartPage {
     }
 
     async getTotalPrice(): Promise<string> {
-        return await this.page.locator('[data-testid="total-price-value"] [data-zta="reducedPriceAmount"]').innerText();
+        return this.page.locator('[data-testid="total-price-value"] [data-zta="reducedPriceAmount"]').innerText();
     }
 
     async getQuantity(): Promise<string> {
-        return await this.page.locator('[data-zta="quantityStepperInput"]').first().inputValue();
+        return this.page.locator('[data-zta="quantityStepperInput"]').first().inputValue();
     }
 
     async getNotification(message: string) {

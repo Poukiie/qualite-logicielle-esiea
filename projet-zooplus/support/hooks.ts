@@ -5,11 +5,10 @@ import { LoginPage } from "../pages/LoginPage";
 import { CartPage } from "../pages/CartPage";
 import { SearchPage } from "../pages/SearchPage";
 import { NavigationPage } from "../pages/NavigationPage";
-import { CustomWorld } from "./world";
 
 setDefaultTimeout(30000);
 
-Before(async function (this: CustomWorld) {
+Before(async function () {
     this.browser = await chromium.launch({
         headless: false,
         slowMo: 200,
@@ -25,7 +24,7 @@ Before(async function (this: CustomWorld) {
     this.navigationPage = new NavigationPage(this.page);
 });
 
-After(async function (this: CustomWorld) {
+After(async function () {
   await this.page?.close();
   await this.context?.close();
   await this.browser?.close();
