@@ -11,20 +11,29 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Setup node.js
       uses: actions/setup-node@v4
       with:
         node-version: lts/*
         cache: 'npm'
         cache-dependency-path: './projet-zooplus/package-lock.json'
+
     - name: Install dependencies
       working-directory: ./projet-zooplus
       run: npm ci
+
     - name: Install Playwright Browsers
       working-directory: ./projet-zooplus
       run: npx playwright install --with-deps
+
+    - name: Create Playwright report directory
+      run: mkdir -p ./projet-zooplus/playwright-report
+
     - name: Run Playwright tests
+      working-directory: ./projet-zooplus
       run: npx cucumber-js
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
