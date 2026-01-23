@@ -9,6 +9,8 @@ export class LoginPage {
 
   async gotoLoginPage() {
     await this.page.goto("https://www.zooplus.fr/account/overview");
+    await this.page.waitForLoadState("networkidle"); // attendre que la page soit chargée
+    await this.page.getByRole('button', { name: 'Utiliser uniquement les cookies nécessaires' }).click();
   }
 
   async fillEmail(email: string) {
