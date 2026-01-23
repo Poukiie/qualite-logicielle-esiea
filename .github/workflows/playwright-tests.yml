@@ -15,9 +15,13 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: lts/*
+        cache: 'npm'
+        cache-dependency-path: './projet-zooplus/package-lock.json'
     - name: Install dependencies
+      working-directory: ./projet-zooplus
       run: npm ci
     - name: Install Playwright Browsers
+      working-directory: ./projet-zooplus
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx cucumber-js
@@ -25,5 +29,5 @@ jobs:
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
-        path: playwright-report/
+        path: ./projet-zooplus/playwright-report/
         retention-days: 30
